@@ -20,7 +20,7 @@ Similar to macOS [QLMarkdown](https://github.com/sbarex/QLMarkdown), this extens
 ## 🚀 Quick Install
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/noboomu/gnome-markdown-quicklook/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/noboomu/gnome-markdown-ql/master/install.sh | bash
 ```
 
 **That's it!** The installer will handle dependencies, setup, and configuration automatically.
@@ -145,8 +145,8 @@ The installer automatically handles:
 ### Local Setup
 
 ```bash
-git clone https://github.com/noboomu/gnome-markdown-quicklook.git
-cd gnome-markdown-quicklook
+git clone https://github.com/noboomu/gnome-markdown-ql.git
+cd gnome-markdown-ql
 uv sync  # or pip install -e .
 ```
 
@@ -178,8 +178,8 @@ uv run python -m gnome_markdown_quicklook.converter tests/sample.md --flavor com
 sudo apt install gnome-sushi libwebkit2gtk-4.1-dev python3-pip
 
 # 2. Clone repository
-git clone https://github.com/noboomu/gnome-markdown-quicklook.git
-cd gnome-markdown-quicklook
+git clone https://github.com/noboomu/gnome-markdown-ql.git
+cd gnome-markdown-ql
 
 # 3. Install Python dependencies
 uv sync  # or pip install -r requirements.txt
@@ -247,11 +247,11 @@ This project is licensed under the [GNU General Public License v2.0](https://www
 
 ## 🌟 Contributing
 
-Contributions welcome! Please read our [Contributing Guide](CONTRIBUTING.md) and submit pull requests to our [GitHub repository](https://github.com/noboomu/gnome-markdown-quicklook).
+Contributions welcome! Please read our [Contributing Guide](CONTRIBUTING.md) and submit pull requests to our [GitHub repository](https://github.com/noboomu/gnome-markdown-ql).
 
 ---
 
 **Ready to use!** 🎉
 ```bash
-curl -fsSL https://raw.githubusercontent.com/noboomu/gnome-markdown-quicklook/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/noboomu/gnome-markdown-ql/master/install.sh | bash
 ```

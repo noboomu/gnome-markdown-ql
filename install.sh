@@ -1,6 +1,6 @@
 #!/bin/bash
 # GNOME Markdown QuickLook - One-line installer
-# Usage: curl -fsSL https://raw.githubusercontent.com/noboomu/gnome-markdown-quicklook/main/install.sh | bash
+# Usage: curl -fsSL https://raw.githubusercontent.com/noboomu/gnome-markdown-ql/master/install.sh | bash
 
 set -e
 
@@ -23,6 +23,8 @@ readonly STAR='★'
 readonly PROJECT_NAME="GNOME Markdown QuickLook"
 readonly PROJECT_VERSION="1.0.0"
 readonly PROJECT_URL="https://github.com/noboomu/gnome-markdown-ql"
+readonly PROJECT_BRANCH="${GMQL_BRANCH:-master}"
+readonly RAW_URL="https://raw.githubusercontent.com/noboomu/gnome-markdown-ql/${PROJECT_BRANCH}"
 
 # Installation paths
 if [[ $EUID -eq 0 ]]; then
@@ -166,15 +168,17 @@ download_files() {
     cd "$temp_dir"
 
     # Download main files
-    curl -fsSL "${PROJECT_URL}/raw/main/src/gnome_markdown_quicklook/converter.py" -o converter.py &
+    curl -fsSL "${RAW_URL}/src/gnome_markdown_quicklook/converter.py" -o converter.py &
     local dl1_pid=$!
 
-    curl -fsSL "${PROJECT_URL}/raw/main/src/sushi-viewers/markdown.js" -o markdown.js &
+    curl -fsSL "${RAW_URL}/src/sushi-viewers/markdown.js" -o markdown.js &
     local dl2_pid=$!
 
-    wait $dl1_pid $dl2_pid
+    local dl_failed=0
+    wait $dl1_pid || dl_failed=1
+    wait $dl2_pid || dl_failed=1
 
-    if [[ ! -f converter.py || ! -f markdown.js ]]; then
+    if [[ $dl_failed -ne 0 || ! -s converter.py || ! -s markdown.js ]]; then
         print_error "Failed to download project files"
         exit 1
     fi
